@@ -1,0 +1,92 @@
+          <p><strong>【ユーザーのOS情報】</strong></p>
+<script type="text/javascript">
+    with(document){
+        write("<p>ユーザーのOS: <em>"+navigator.platform+"<\/em><\/p>");
+        write("<p>ユーザーのOSのデフォルト言語: <em>"+navigator.systemLanguage+"<\/em><\/p>");
+        write("<p>ユーザー使用言語: <em>"+navigator.language+"<\/em><\/p>");
+        write("<p>ユーザーエージェントのヘッダ文字列: <em>"+navigator.userAgent+"<\/em><\/p>");
+        write("<p>ユーザーのOSで設定されている言語: <em>"+navigator.userLanguage+"<\/em><\/p>");
+    }
+</script>
+          <script type="text/javascript">
+    function chkBrowserAppNameVer(){
+        var s="";
+        var FLG=false;
+        /* ブラウザ名 */
+        var browse=navigator.appName;
+        /* ブラウザのバージョン番号 */
+        var browse_version=navigator.appVersion;
+        /* Netscape */
+        if(browse=="Netscape"){
+            if(browse_version < 6){
+                s+="Netscape 6.0 以上のブラウザで閲覧して下さい。";
+                FLG=false;
+            }else{
+                s+="Firefox または Netscape 6.0 以上のブラウザです";
+                FLG=true;
+            }
+        }else if(browse=="Microsoft Internet Explorer"){
+            if(browse_version < 6){
+                s+="IE 6.0 以上 のブラウザで閲覧して下さい。";
+                FLG=false;
+            }else{
+                s+="IE 6.0 以上のブラウザです。";
+                FLG=true;
+            }
+        }else{
+            s+="IE、Firefox、Netscape以外のブラウザでは正しく動作しない可能性があります。";
+            FLG=false;
+        }
+        document.getElementById("resChkBrowserAppNameVer").innerHTML=s;
+        return FLG;
+    }
+</script>
+
+<form action="#">
+    <input type="button" value="ブラウザチェック" onclick="chkBrowserAppNameVer()" />
+    結果：<span id="resChkBrowserAppNameVer"></span>
+</form>
+          <script type="text/javascript">
+    function chkUserAgent(){
+        var brw=false;
+        /* ユーザーエージェントのヘッダ文字列名 */
+        var ua=navigator.userAgent;
+        if(ua.indexOf("Firefox")>-1){
+            brw="Firefox";
+        }else if(ua.indexOf("Safari")>-1){
+            brw="Safari";
+        }else if(ua.indexOf("Opera")>-1){
+            brw="Opera";
+        }else if(ua.indexOf("MSIE 5")>-1){
+            brw="IE5";
+        }else if(ua.indexOf("MSIE 6")>-1){
+            brw="IE6";
+        }else if(ua.indexOf("MSIE 7")>-1){
+            brw="IE7";
+        }else if(ua.indexOf("Netscape")>-1){
+            brw="Netscape";
+        }else{
+            brw="other";
+        }
+        document.getElementById("resChkUserAgent").innerHTML="<strong>"+brw+"</strong><br>UserAgent：<code>"+ua+"</code>";
+    }
+</script>
+
+<form action="#">
+    <p><input type="button" value="ブラウザチェック" onclick="chkUserAgent()" /></p>
+    結果：<span id="resChkUserAgent"></span>
+</form>
+<script type="text/javascript">
+    if(navigator.javaEnabled()==true){
+        document.write("Java有効");
+    }else{
+        document.write("Java無効");
+    }
+</script>
+          <script type="text/javascript">
+    if((navigator.taintEnabled) && navigator.taintEnabled()==true){
+        document.write("非通知データ送信可");
+    }else{
+        document.write("非通知データ送信不可");
+    }
+</script><p>
