@@ -1,3 +1,8 @@
+<html>
+<head>
+<title>User browser information</title>
+</head>
+<body>
 <p><strong>[User browser information]</strong></p>
 <script type="text/javascript">
     with (document) {
@@ -103,3 +108,5 @@
         document.write("Cannot send anonymous data");
     }
 </script><p>
+</body>
+</html>
