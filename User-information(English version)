@@ -1,0 +1,105 @@
+<p><strong>[User browser information]</strong></p>
+<script type="text/javascript">
+    with (document) {
+        write("<p>Browser Code Name: <em>"+navigator.appCodeName+"<\/em><\/p>");
+        write("<p>Browser minor version number: <em>"+navigator.appMinorVersion+"<\/em><\/p>");
+        write("<p>Browser Name: <em>"+navigator.appName+"<\/em><\/p>");
+        write("<p>Browser version number: <em>"+parseInt(navigator.appVersion)+"<\/em><\/p>");
+        write("<p>Current browser language: <em>"+navigator.browserLanguage+"<\/em><\/p>");
+        write("<p>Cookies enabled?: <em>"+navigator.cookieEnabled+"<\/em><\/p>");
+        write("<p>browser system CPU class: <em>"+navigator.cpuClass+"<\/em><\/p>");
+        write("<p>Online or not: <em>"+navigator.onLine+"<\/em><\/p>");
+    }
+</script>
+          <p><strong>[User OS Information]</strong></p>
+<script type="text/javascript">
+    with (document) {
+        write("<p>User OS: <em>"+navigator.platform+"<\/em><\/p>");
+        write("<p>User OS default language: <em>"+navigator.systemLanguage+"<\/em><\/p>");
+        write("<p>User preferred language: <em>"+navigator.language+"<\/em><\/p>");
+        write("<p>User agent header string: <em>"+navigator.userAgent+"<\/em><\/p>");
+        write("<p>Language set in user's OS: <em>"+navigator.userLanguage+"<\/em><\/p>");
+    }
+</script>
+          <script type="text/javascript">
+    function chkBrowserAppNameVer(){
+        var s="";
+        var FLG=false;
+        /* browser name */
+        var browse=navigator.appName;
+        /* Browser version number */
+        var browse_version=navigator.appVersion;
+        /* Netscape */
+        if(browse=="Netscape"){
+            if(browse_version < 6){
+                s+="Browse with Netscape 6.0 or above.";
+                FLG=false;
+            }else{
+                s+="Firefox or Netscape 6.0 or higher browser";
+                FLG=true;
+            }
+        }else if(browse=="Microsoft Internet Explorer"){
+            if(browse_version < 6){
+                s+="Please view with IE 6.0 or above.";
+                FLG=false;
+            }else{
+                s+="IE 6.0 or higher browser.";
+                FLG=true;
+            }
+        }else{
+            s+="May not work properly with browsers other than IE, Firefox, and Netscape.";
+            FLG=false;
+        }
+        document.getElementById("resChkBrowserAppNameVer").innerHTML=s;
+        return FLG;
+    }
+</script>
+
+<form action="#">
+    <input type="button" value="browser check" onclick="chkBrowserAppNameVer()" />
+    Result: <span id="resChkBrowserAppNameVer"></span>
+</form>
+          <script type="text/javascript">
+    function chkUserAgent(){
+        var brw=false;
+        /* user agent header string name */
+        var ua=navigator.userAgent;
+        if(ua.indexOf("Firefox")>-1){
+            brw="Firefox";
+        }else if(ua.indexOf("Safari")>-1){
+            brw="Safari";
+        }else if(ua.indexOf("Opera")>-1){
+            brw="Opera";
+        }else if(ua.indexOf("MSIE 5")>-1){
+            brw="IE5";
+        }else if(ua.indexOf("MSIE 6")>-1){
+            brw="IE6";
+        }else if(ua.indexOf("MSIE7")>-1){
+            brw="IE7";
+        }else if(ua.indexOf("Netscape")>-1){
+            brw="Netscape";
+        }else{
+            brw="other";
+        }
+        document.getElementById("resChkUserAgent").innerHTML="<strong>"+brw+"</strong><br>UserAgent: <code>"+ua+"</code>";
+    }
+</script>
+
+<form action="#">
+    <p><input type="button" value="browser check" onclick="chkUserAgent()" /></p>
+    Result: <span id="resChkUserAgent"></span>
+</form>
+<script type="text/javascript">
+    if(navigator.javaEnabled()==true){
+        document.write("Java enabled");
+    }else{
+        document.write("Java disabled");
+    }
+</script>
+          <script type="text/javascript">
+    if((navigator.taintEnabled) && navigator.taintEnabled()==true){
+        document.write("Can send non-notification data");
+    }else{
+        document.write("Cannot send anonymous data");
+    }
+</script><p>
